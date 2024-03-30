@@ -3,11 +3,14 @@ package dev.currypan.test.doma;
 import lombok.Getter;
 import lombok.NonNull;
 import org.seasar.doma.jdbc.Config;
+import org.seasar.doma.jdbc.JdbcLogger;
+import org.seasar.doma.jdbc.UnknownColumnHandler;
 import org.seasar.doma.jdbc.dialect.Dialect;
 import org.seasar.doma.jdbc.dialect.SqliteDialect;
 import org.seasar.doma.jdbc.tx.LocalTransactionDataSource;
 import org.seasar.doma.jdbc.tx.LocalTransactionManager;
 import org.seasar.doma.jdbc.tx.TransactionManager;
+import org.seasar.doma.slf4j.Slf4jJdbcLogger;
 
 import javax.sql.DataSource;
 
@@ -19,8 +22,8 @@ public class SQLConfig implements Config {
     private final LocalTransactionDataSource localTransactionDataSource;
     private final TransactionManager transactionManager;
     private final DataSource dataSource;
-    private final IJdbcLogger jdbcLogger;
-    private final IUnknownColumnHandler unknownColumnHandler;
+    private final JdbcLogger jdbcLogger;
+    private final UnknownColumnHandler unknownColumnHandler;
 
     public SQLConfig() {
         dialect = new SqliteDialect();
@@ -30,7 +33,7 @@ public class SQLConfig implements Config {
                 null
         );
         localTransactionDataSource = new LocalTransactionDataSource(dataSource);
-        jdbcLogger = new IJdbcLogger();
+        jdbcLogger = new Slf4jJdbcLogger();
         transactionManager = new LocalTransactionManager(localTransactionDataSource.getLocalTransaction(jdbcLogger));
         unknownColumnHandler = new IUnknownColumnHandler();
     }
