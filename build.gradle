@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'application'
+    id 'org.domaframework.doma.compile' version '2.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+String domaVersion = '2.58.0'
+
+dependencies {
+    annotationProcessor("org.seasar.doma:doma-processor:${domaVersion}")
+    implementation("org.seasar.doma:doma-core:${domaVersion}")
+    implementation("org.seasar.doma:doma-slf4j:${domaVersion}")
+
+    implementation("org.xerial:sqlite-jdbc:3.45.2.0")
+
+    annotationProcessor("org.projectlombok:lombok:1.18.32")
+    compileOnly("org.projectlombok:lombok:1.18.32")
+}
+
+application {
+    mainClass = "dev.currypan.test.TestApp"
+    executableDir = "run"
+}
