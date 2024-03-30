@@ -1,7 +1,6 @@
 package dev.currypan.test.doma;
 
 import lombok.Getter;
-import lombok.NonNull;
 import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.JdbcLogger;
 import org.seasar.doma.jdbc.UnknownColumnHandler;
@@ -16,7 +15,7 @@ import javax.sql.DataSource;
 
 @Getter
 public class SQLConfig implements Config {
-    private static SQLConfig CONFIG;
+    public static SQLConfig CONFIG = new SQLConfig();
 
     private final Dialect dialect;
     private final LocalTransactionDataSource localTransactionDataSource;
@@ -36,12 +35,6 @@ public class SQLConfig implements Config {
         jdbcLogger = new Slf4jJdbcLogger();
         transactionManager = new LocalTransactionManager(localTransactionDataSource.getLocalTransaction(jdbcLogger));
         unknownColumnHandler = new IUnknownColumnHandler();
-    }
-
-    @NonNull
-    public static SQLConfig singleton() {
-        if (CONFIG == null) CONFIG = new SQLConfig();
-        return CONFIG;
     }
 
     @Override

@@ -7,9 +7,9 @@ import org.seasar.doma.jdbc.tx.TransactionManager;
 
 public class TestApp {
     public static void main(final String[] args) {
-        final TransactionManager tm = SQLConfig.singleton().getTransactionManager();
+        final TransactionManager tm = SQLConfig.CONFIG.getTransactionManager();
         tm.required(() -> {
-            final TestDao dao = new TestDaoImpl(SQLConfig.singleton());
+            final TestDao dao = new TestDaoImpl(SQLConfig.CONFIG);
             dao.selectAll();
         });
     }
