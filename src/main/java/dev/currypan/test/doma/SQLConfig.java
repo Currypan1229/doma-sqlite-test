@@ -34,7 +34,6 @@ public class SQLConfig implements Config {
         );
         localTransactionDataSource = new LocalTransactionDataSource(dataSource);
         jdbcLogger = new Slf4jJdbcLogger();
-        //jdbcLogger = new IJdbcLogger();
         transactionManager = new LocalTransactionManager(localTransactionDataSource.getLocalTransaction(jdbcLogger));
         unknownColumnHandler = new IUnknownColumnHandler();
     }
