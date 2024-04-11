@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'java-library'
     id 'application'
     id 'org.domaframework.doma.compile' version '2.0.0'
 }
@@ -25,7 +24,7 @@ dependencies {
 
 application {
     mainClass = "dev.currypan.test.TestApp"
-    executableDir = "run"
+    executableDir = "run/"
 }
 
 java {

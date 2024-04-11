@@ -1,0 +1,6 @@
+create table if not exists M_TEST (
+  ID BIGINT not null
+  , VALUE VARCHAR(255) not null
+  , VERSION_NO BIGINT not null
+  , constraint M_TEST_PKC primary key (ID)
+);

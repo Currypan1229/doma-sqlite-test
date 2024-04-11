@@ -6,6 +6,7 @@ import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 import org.seasar.doma.Table;
+import org.seasar.doma.Version;
 
 @Data
 @NoArgsConstructor
@@ -14,8 +15,12 @@ import org.seasar.doma.Table;
 public class TestEntity {
     @Column(name = "ID")
     @Id
-    private String id;
+    private long id;
 
     @Column(name = "VALUE")
     private String value;
+
+    @Column(name = "VERSION_NO")
+    @Version
+    private long versionNo;
 }
