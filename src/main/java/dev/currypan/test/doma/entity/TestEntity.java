@@ -22,5 +22,5 @@ public class TestEntity {
 
     @Column(name = "VERSION_NO")
     @Version
-    private long versionNo;
+    private long versionNo = -1;
 }

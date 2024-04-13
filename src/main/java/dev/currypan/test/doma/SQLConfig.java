@@ -23,7 +23,7 @@ public class SQLConfig implements Config {
 
     private SQLConfig() {
         dialect = new SqliteDialect();
-        dataSource = new LocalTransactionDataSource("jdbc:sqlite:test.db", null, null);
+        dataSource = new LocalTransactionDataSource("jdbc:sqlite:test.db?jdbc.explicit_readonly=true&busy_timeout=1000000", null, null);
         jdbcLogger = new Slf4jJdbcLogger();
         transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(getJdbcLogger()));
         unknownColumnHandler = new IUnknownColumnHandler();
