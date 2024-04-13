@@ -13,12 +13,10 @@ public class TestRepo {
     }
 
     public static void save(final TestEntity entity) {
-        synchronized (dao) {
-            if (entity.getVersionNo() <= 0) {
-                dao.insert(entity);
-            } else {
-                dao.update(entity);
-            }
+        if (entity.getVersionNo() <= 0) {
+            dao.insert(entity);
+        } else {
+            dao.update(entity);
         }
     }
 }

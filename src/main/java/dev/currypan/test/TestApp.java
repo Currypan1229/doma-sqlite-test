@@ -20,7 +20,7 @@ public class TestApp {
 
 
         //Async thread
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             new Thread(() -> tm.required(() -> {
                 TestEntity entity = TestRepo.selectById(0);
                 if (entity == null) {
